@@ -21,12 +21,26 @@ export default function Edit()
         setQnA(currentQnA)
     }
 
-    console.log(QnA)
+    const save = () => {
+        const text = JSON.stringify(QnA)
+        const blob = new Blob([text], { type: "text/plain" });
+        const link = document.createElement("a");
+
+        link.href = URL.createObjectURL(blob);
+        link.download = "example.txt";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+
 
     return(
         <div>
+            <div className="w-full bg-stone-500 h-auto m-auto ">
+                <button className="button" onClick={save}> save </button>
+            </div>
             {
-                 QnA?.map((question, index) => {
+                QnA?.map((question, index) => {
                     return (
                         <div key={index} className="w-full h-auto  m-auto sahdow-lg mb-10">
                             <input 
