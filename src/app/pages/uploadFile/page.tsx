@@ -2,16 +2,25 @@
 import {useState} from "react"
 import axios from "axios"
 import { useMutation } from "@tanstack/react-query"
+import useReviewerStore from "@/app/store/reviewerStore"
+import { reviewerInterface } from "@/app/interface/reviewer"
+import { useRouter } from "next/navigation"
+
 
 export default function Upload()
 {
     const [file, setFile] = useState<File | null>(null)
 
+    const setReviewer = useReviewerStore((state) => state.setReviewer)
+
+    const router = useRouter()
+
     const mutation = useMutation({
         mutationFn : (formData : FormData) => axios.post("http://localhost:1000/upload", formData),
         onSuccess : (response) => {
-            console.log(response)
-            alert("success")
+            const  QnA : reviewerInterface[]  = response.data
+            setReviewer(QnA)
+            router.push("/pages/edit")
         },
         onError : (err) => {
             alert("error")
@@ -26,8 +35,6 @@ export default function Upload()
         mutation.mutate(formData)
     }
 
-    
-
     return(
         <div>
             <input 
@@ -39,7 +46,7 @@ export default function Upload()
               onChange={(e) => setFile((e.target.files) ? e.target.files[0] : null)}
              />
             <br /><br />
-             <button className="ms-2 button" onClick={upload}> upload </button>
+            <button className="ms-2 button" onClick={upload}> upload </button>
         </div>
     )
 }

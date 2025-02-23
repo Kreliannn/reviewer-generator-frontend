@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <div>
-        <Link href="/pages/upload"> upload file </Link>
+        <Link href="/pages/uploadFile"> upload file </Link>
     </div>
   );
 }
