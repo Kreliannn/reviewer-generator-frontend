@@ -33,9 +33,6 @@ export default function Upload()
              />
             <br /><br />
    
-            {
-                text
-            }
         </div>
     )
 }

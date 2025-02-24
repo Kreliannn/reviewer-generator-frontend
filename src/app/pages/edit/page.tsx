@@ -37,7 +37,7 @@ export default function Edit()
 
     return(
         <div className="w-full bg-stone-100">
-            <div className="w-full h-12 bg-black shadow  mb-5 flex justify-end place-items-center">
+            <div className="w-full h-12 bg-stone-400 shadow  mb-5 flex justify-end place-items-center">
                 <Button variant={"outline"} onClick={save}> save </Button>
             </div>
             {
