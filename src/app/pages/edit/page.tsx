@@ -11,6 +11,7 @@ export default function Edit()
     const reviewer = useReviewerStore((state) => state.reviewer)
     const [QnA, setQnA] = useState(reviewer)
 
+
     const changeTitle = (e : React.ChangeEvent<HTMLInputElement>, index : number) => {
         let currentQnA = [...QnA]
         currentQnA[index] = { item : e.target.value, definition : currentQnA[index].definition }
@@ -36,9 +37,17 @@ export default function Edit()
     }
 
     return(
-        <div className="w-full bg-stone-100">
-            <div className="w-full h-12 bg-stone-400 shadow  mb-5 flex justify-end place-items-center">
-                <Button variant={"outline"} onClick={save}> save </Button>
+        <div className="w-full bg-stone-100 ">
+            <div className="w-full h-14 bg-black shadow  mb-5 ">
+                <div className="m-auto w-5/6  h-full place-items-center flex gap-3">
+                    <Input 
+                        type="text" 
+                        value={"basket ball ppt"}
+                        onChange={(e) =>{}}
+                        className="font-bold bg-white"
+                    /> 
+                    <Button variant={"outline"} onClick={save} >  save </Button>
+                </div> 
             </div>
             {
                 QnA?.map((question, index) => {
