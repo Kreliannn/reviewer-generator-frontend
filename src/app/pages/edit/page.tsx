@@ -12,17 +12,19 @@ export default function Edit()
     const reviewer = useReviewerStore((state) => state.reviewer)
     const [QnA, setQnA] = useState(reviewer)
 
+    console.log(QnA)
+
     const [fileName, setFileName] = useState("")
 
     const changeTitle = (e : React.ChangeEvent<HTMLInputElement>, index : number) => {
         let currentQnA = [...QnA]
-        currentQnA[index] = { item : e.target.value, definition : currentQnA[index].definition }
+        currentQnA[index] = { item : e.target.value, definition : currentQnA[index].definition, id : currentQnA[index].id }
         setQnA(currentQnA)
     }
 
     const changeDefinition = (e : React.ChangeEvent<HTMLTextAreaElement>, index : number) => {
         let currentQnA = [...QnA]
-        currentQnA[index] = { definition : e.target.value, item : currentQnA[index].item }
+        currentQnA[index] = { definition : e.target.value, item : currentQnA[index].item, id : currentQnA[index].id }
         setQnA(currentQnA)
     }
 
@@ -67,7 +69,7 @@ export default function Edit()
 
                                 <div className="w-full flex justify-between items-center"> 
                                     <Label className="font-bold text-stone-600"> item #{index + 1}</Label>
-                                    <X className="w-5 h-5 text-red-500 hover:bg-red-500 hover:text-white rounded " onClick={()=>setQnA(QnA.filter((item) => item.item != question.item))}/>
+                                    <X className="w-5 h-5 text-red-500 hover:bg-red-500 hover:text-white rounded " onClick={()=>setQnA(QnA.filter((item) => item.id != question.id))}/>
                                 </div>
                              
                                 <Input 
@@ -91,7 +93,7 @@ export default function Edit()
                  })
             }
             
-            <button className="button w-5/6 m-auto block" onClick={() => setQnA([...QnA, { item : "", definition : ""}])}> add items </button>
+            <button className="button w-5/6 m-auto block" onClick={() => setQnA([...QnA, { id : 1, item : "", definition : ""}])}> add items </button>
 
             <br />
         </div>
