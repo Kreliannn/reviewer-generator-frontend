@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
+import { Trash, X } from "lucide-react";
 
 export default function Edit()
 {
@@ -23,6 +24,10 @@ export default function Edit()
         let currentQnA = [...QnA]
         currentQnA[index] = { definition : e.target.value, item : currentQnA[index].item }
         setQnA(currentQnA)
+    }
+
+    const removeItem = (title : string) => {
+        
     }
 
     const save = () => {
@@ -59,18 +64,24 @@ export default function Edit()
                     return (
                         <div key={index} className="w-5/6 h-auto  m-auto sahdow-lg mb-10">
                             <div className="grid w-full items-center gap-1.5 ">
-                                <Label className="font-bold text-stone-600"> item #{index + 1}</Label>
+
+                                <div className="w-full flex justify-between items-center"> 
+                                    <Label className="font-bold text-stone-600"> item #{index + 1}</Label>
+                                    <X className="w-5 h-5 text-red-500 hover:bg-red-500 hover:text-white rounded " onClick={()=>setQnA(QnA.filter((item) => item.item != question.item))}/>
+                                </div>
+                             
                                 <Input 
                                     type="text" 
                                     value={question.item}
                                     onChange={(e) => changeTitle(e, index)}
                                     className="font-bold bg-white"
+                                    placeholder="set item title"
                                 /> 
                             </div>
                             
                            
                             <div className="grid w-full gap-1.5 mt-2">
-                                <Textarea className="h-auto bg-white h-60 md:h-32"  value={question.definition} onChange={(e) => changeDefinition(e, index)} />
+                                <Textarea className="h-auto bg-white h-60 md:h-32" placeholder="set definition" value={question.definition} onChange={(e) => changeDefinition(e, index)} />
                                 <p className="text-xs text-muted-foreground ">
                                     you can modify item before saving
                                 </p>
@@ -79,6 +90,10 @@ export default function Edit()
                     )
                  })
             }
+            
+            <button className="button w-5/6 m-auto block" onClick={() => setQnA([...QnA, { item : "", definition : ""}])}> add items </button>
+
+            <br />
         </div>
     )
 
