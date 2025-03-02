@@ -50,7 +50,7 @@ export default function Edit()
 
     return(
         <div className="w-full bg-stone-100 ">
-            <div className="w-full h-14 bg-black shadow  mb-5 ">
+            <div className="w-full h-14   mb-5 ">
                 <div className="m-auto w-5/6  h-full place-items-center flex gap-3">
                     <Input 
                         type="text" 
@@ -59,7 +59,7 @@ export default function Edit()
                         onChange={(e) =>setFileName(e.target.value)}
                         className="font-bold bg-white"
                     /> 
-                    <Button variant={"outline"} onClick={save} >  save </Button>
+                    <Button variant={"default"} onClick={save} >  save </Button>
                 </div> 
             </div>
             {

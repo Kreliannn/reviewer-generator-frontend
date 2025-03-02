@@ -14,3 +14,5 @@ export const confirmAlert = (callback: () => void) => {
         }
       });
 }
+
+export const successAlert = ()

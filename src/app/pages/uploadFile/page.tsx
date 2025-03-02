@@ -10,7 +10,7 @@ import { Divide, Upload, X } from "lucide-react"
 
 export default function UploadPage()
 {
-    const [file, setFile] = useState<File | null>(null)
+    const [file, setFile] = useState<FileList | null>(null)
 
     console.log(file)
 
@@ -21,7 +21,7 @@ export default function UploadPage()
     const fileInput = useRef<HTMLInputElement>(null)
 
     const mutation = useMutation({
-        mutationFn : (formData : FormData) => axios.post("http://localhost:1000", formData),
+        mutationFn : (formData : FormData) => axios.post("http://localhost:1000/test", formData),
         onSuccess : (response) => {
             const  QnA : reviewerInterface[]  = response.data
             setReviewer(QnA)
@@ -36,7 +36,10 @@ export default function UploadPage()
     const upload = () => {
         if(!file) return alert("select file")
         const formData = new FormData()
-        formData.append("file", file)
+        for(let i = 0; i < file.length; i++)
+        {
+            formData.append("files", file[i])
+        }
         mutation.mutate(formData)
     }
 
@@ -59,7 +62,8 @@ export default function UploadPage()
               accept="application/pdf" 
               className="hidden" 
               required 
-              onChange={(e) => setFile((e.target.files) ? e.target.files[0] : null)}
+              multiple={true}
+              onChange={(e) => setFile((e.target.files) ? e.target.files : null)}
              />
 
              <br />
@@ -79,6 +83,7 @@ export default function UploadPage()
                     </Button>
                 </div >
             : null}
+
 
             <br />
 
