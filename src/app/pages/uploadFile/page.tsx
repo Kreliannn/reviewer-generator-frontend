@@ -8,17 +8,6 @@ import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Divide, Upload, X } from "lucide-react"
 
-/*
-{(file) ? 
-                <div className=" w-5/6 md:w-3/6 m-auto mt-2 flex items-center justify-between p-3 bg-muted rounded-lg">
-                    <span className="text-sm truncate mr-4">{file.name}</span>
-                    <Button variant="ghost" size="icon" onClick={removeFile} className="hover:text-red-500">
-                    <X className="h-4 w-4 " />
-                    <span className="sr-only">Remove file</span>
-                    </Button>
-                </div >
-            : null}
-*/
 
 export default function UploadPage()
 {
@@ -55,10 +44,17 @@ export default function UploadPage()
         mutation.mutate(formData)
     }
 
-    const removeFile = () => {
+    const removeFile = (index : number) => {
         if(!fileInput.current) return alert("error")
-        fileInput.current.value = ""
-        setFile(null)
+        const dataTransfer = new DataTransfer();
+        Array.from(file as FileList).forEach((file, i) => {
+            if(i !== index) 
+            { 
+                dataTransfer.items.add(file);
+            }
+        })
+        
+        setFile((dataTransfer.files.length > 0) ? dataTransfer.files : null)
     }
 
     return(
@@ -91,7 +87,7 @@ export default function UploadPage()
                     Array.from(file as FileList).map((file, index) => (
                         <div key={index} className=" w-5/6 md:w-3/6 m-auto mt-2 flex items-center justify-between p-3 bg-muted rounded-lg">
                             <span className="text-sm truncate mr-4">{file.name}</span>
-                            <Button variant="ghost" size="icon" onClick={removeFile} className="hover:text-red-500">
+                            <Button variant="ghost" size="icon" onClick={() => removeFile(index) } className="hover:text-red-500">
                             <X className="h-4 w-4 " />
                             <span className="sr-only">Remove file</span>
                             </Button>
