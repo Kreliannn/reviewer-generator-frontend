@@ -8,6 +8,18 @@ import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Divide, Upload, X } from "lucide-react"
 
+/*
+{(file) ? 
+                <div className=" w-5/6 md:w-3/6 m-auto mt-2 flex items-center justify-between p-3 bg-muted rounded-lg">
+                    <span className="text-sm truncate mr-4">{file.name}</span>
+                    <Button variant="ghost" size="icon" onClick={removeFile} className="hover:text-red-500">
+                    <X className="h-4 w-4 " />
+                    <span className="sr-only">Remove file</span>
+                    </Button>
+                </div >
+            : null}
+*/
+
 export default function UploadPage()
 {
     const [file, setFile] = useState<FileList | null>(null)
@@ -74,15 +86,19 @@ export default function UploadPage()
                 <span className="text-xs text-stone-500">pdf file only</span>
             </Button>
 
-            {(file) ? 
-                <div className=" w-5/6 md:w-3/6 m-auto mt-2 flex items-center justify-between p-3 bg-muted rounded-lg">
-                    <span className="text-sm truncate mr-4">{file.name}</span>
-                    <Button variant="ghost" size="icon" onClick={removeFile} className="hover:text-red-500">
-                    <X className="h-4 w-4 " />
-                    <span className="sr-only">Remove file</span>
-                    </Button>
-                </div >
-            : null}
+            {
+                (file) ? 
+                    Array.from(file as FileList).map((file, index) => (
+                        <div key={index} className=" w-5/6 md:w-3/6 m-auto mt-2 flex items-center justify-between p-3 bg-muted rounded-lg">
+                            <span className="text-sm truncate mr-4">{file.name}</span>
+                            <Button variant="ghost" size="icon" onClick={removeFile} className="hover:text-red-500">
+                            <X className="h-4 w-4 " />
+                            <span className="sr-only">Remove file</span>
+                            </Button>
+                        </div >
+                    ))
+                : null
+            }
 
 
             <br />
