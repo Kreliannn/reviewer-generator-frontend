@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📚 PDF Reviewer Generator
 
-## Getting Started
+A web app that allows users to upload **PDF files** and automatically generates a **question-and-answer reviewer** in **JSON format**. Users can **edit, add, or remove** items from the generated output before saving.
 
-First, run the development server:
+## 🚧 <span style="color:red"> not complete </span>  
+this project is under developemnt
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## ⚠️ <span style="color:red">Warning</span>  
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+🚨 <span style="color:red">**This repository is private and contains only the frontend code.**</span>  
+If you want access to the **full source code**, please message me on TikTok.  
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+🔗 [Contact me on TikTok](https://www.tiktok.com/@krelq)  
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## ✨ Features
+
+- 📂 **Upload Multiple PDFs** – Process multiple PDF files at once.
+- 🤖 **Auto-Generate Questions & Answers** – Converts content into a structured Q&A format.
+- ✏️ **Modify Output** – Users can edit, add, or remove generated questions before saving.
+- 💾 **Save & Export** – Store the final reviewer in JSON format.
+
+
+## 📌 Usage
+
+1. Upload a PDF file.
+2. Wait for the system to generate the Q&A reviewer.
+3. Modify the generated questions and answers as needed.
+4. Save and export the final reviewer.
+
+
+
+## 📸 Preview  
+![Image](https://github.com/user-attachments/assets/c7358c44-e113-487c-8eae-c5ba87144877)
+
+![Image](https://github.com/user-attachments/assets/f7f2b364-9da7-454e-86e3-cd0b4055358d)
+
+![Image](https://github.com/user-attachments/assets/198c1270-2c24-49b8-b5ed-71e2cfb8e685)
+
+![Image](https://github.com/user-attachments/assets/c305f524-f060-4766-947b-f8d76019d827)
+
+![Image](https://github.com/user-attachments/assets/219cd396-352a-49dd-b652-b05f10465ce8)
