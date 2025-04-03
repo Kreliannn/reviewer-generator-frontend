@@ -6,9 +6,9 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
 import { Trash, X } from "lucide-react";
+import Navbar from "@/components/ui/quizNavbar"
 
-
-export default function ReviewerPage()
+export default function ReviewQuiz()
 {
     const [search, setSearch] = useState("")
 
@@ -18,6 +18,7 @@ export default function ReviewerPage()
 
     return(
         <div className="w-full bg-stone-100 ">
+            <Navbar />
             {
                 reviewer?.map((item, index) => {
                     return (
