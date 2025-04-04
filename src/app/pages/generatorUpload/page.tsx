@@ -7,13 +7,13 @@ import { reviewerInterface } from "@/app/interface/reviewer"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Divide, Upload, X } from "lucide-react"
-
+import { ButtonLoading } from "./components/loading"
 
 export default function UploadPage()
 {
     const [file, setFile] = useState<FileList | null>(null)
-
-    console.log(file)
+    const [isLoading, setIsLoading] = useState(false)
+   
 
     const setReviewer = useReviewerStore((state) => state.setReviewer)
 
@@ -36,6 +36,7 @@ export default function UploadPage()
 
     const upload = () => {
         if(!file) return alert("select file")
+        setIsLoading(true)
         const formData = new FormData()
         for(let i = 0; i < file.length; i++)
         {
@@ -99,8 +100,8 @@ export default function UploadPage()
 
             <br />
 
-            
-            <Button onClick={upload} className="block w-5/6 md:w-3/6 m-auto" disabled={!file}> Generate Reviewer </Button>
+            {(isLoading) ? <ButtonLoading />:  <Button onClick={upload} className="block w-5/6 md:w-3/6 m-auto" disabled={!file}> Generate Reviewer </Button>}
+
             
             <div className="w-5/6 md:w-3/6 m-auto">
               <p className="w-5/6  m-auto text-center text-md  text-stone-400 mt-4 text-xs"> Your PDF file will be analyzed to create a reviewer with key concepts and question that you can personalized </p>
