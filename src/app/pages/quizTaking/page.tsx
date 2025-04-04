@@ -33,7 +33,7 @@ export default function TakeQuiz()
         {
             console.log("no quiz")
         }
-    },[])
+    },[reviewer])
 
     const checkIfExists = ( item: string) => {
         if(quiz) return quiz.some((obj) => obj.item.toUpperCase() === item.toUpperCase()); 
