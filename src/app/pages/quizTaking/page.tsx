@@ -11,7 +11,7 @@ import Navbar from "@/components/ui/quizNavbar"
 import { Send } from 'lucide-react';
 import AllChoices from "./components/allChoices"
 import { SkeletonCard } from "./components/questionSkeleton"
-
+import StartPage from "./components/startPage"
 
 export default function TakeQuiz()
 {
@@ -20,17 +20,17 @@ export default function TakeQuiz()
     const [quiz, setQuiz] = useState<reviewerInterface[]>()
     const [question, setQuestion] = useState<string>("")
     const [input, setInput] = useState<string>("")
-    const [index, setIndex] = useState(0)
     const [isLoading, setIsLoading] = useState(true)
+    const [isFirstTry, SetIsFirstTry] = useState(true)
 
-    console.log(quiz)
+    if(isFirstTry) return <StartPage />
 
     useEffect(() => {
         setQuiz(reviewer)
         console.log(reviewer)
         if(reviewer.length != 0)
         {
-            setQuestion(reviewer[index].definition)
+            setQuestion(reviewer[0].definition)
             setIsLoading(false)
         }
         else
@@ -45,9 +45,8 @@ export default function TakeQuiz()
     
     const submit = () => {
         if(quiz == undefined) return
-        if(input.toUpperCase() == quiz[index].item.toUpperCase())
+        if(input.toUpperCase() == quiz[0].item.toUpperCase())
         {
-            //setIndex(index + 1)
             const newQuiz = [...quiz]
             newQuiz.shift();
             setQuiz(newQuiz) 
